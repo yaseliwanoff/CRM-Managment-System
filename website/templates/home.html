@@ -20,7 +20,7 @@
                     {% if records %}
                         {% for record in records %}
                             <tr>
-                                <td>{{ record.id }}</td>
+                                <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
                                 <td>{{ record.first_name }}</td>
                                 <td>{{ record.last_name }}</td>
                                 <td>{{ record.address }}</td>
@@ -35,7 +35,9 @@
                     {% endif %}
                 </tbody>
           </table>
+          <a href="{% url 'add_record' %}" class="btn btn-success">Add new record</a>
     {% else %}
+    <div class='col-md-6 offset-md-3'>
         <h1>Login in website</h1>
         <br>
         <form method='POST' action="{% url "home" %}">
@@ -50,5 +52,6 @@
             </div>
             <button type="submit" class="btn btn-dark">login</button>
         </form>
+    </div>
     {% endif %}
 {% endblock content %}
